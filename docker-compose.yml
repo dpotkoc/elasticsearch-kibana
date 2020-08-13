@@ -41,9 +41,19 @@ services:
       - 1358:1358
     links:
       - elasticsearch
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+       RABBITMQ_DEFAULT_USER: admin
+       RABBITMQ_DEFAULT_PASS: admin
 
 volumes:
   elasticsearch-data:
+    driver: local
+  rabbit:
     driver: local
 
 networks:
